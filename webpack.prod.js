@@ -3,8 +3,10 @@ const webpack = require('webpack');
 const path = require('path');
 //const CleanWebpackPlugin = require('clean-webpack-plugin');
 //const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Obfuscator = require('webpack-obfuscator');
-const MinifyCss = require('mini-css-extract-plugin');
+//const MinifyCss = require('mini-css-extract-plugin');
+
 
 module.exports = {
 
@@ -17,7 +19,6 @@ output: {
    
     path: path.resolve(__dirname, 'dist'),
     filename: "[name].bundle.js",
-    publicPath: 'dist'
 
 },
  
@@ -26,8 +27,6 @@ output: {
 module : {
     rules: [  
         {
-            include: [path.resolve(__dirname, 'src')],
-    
 
             test: /\.js$/,
             exclude: /node_modules/,
@@ -40,11 +39,10 @@ module : {
         },
 
         {
-            include: [path.resolve(__dirname, 'src')],
-    
+
             test: /\.(scss|css)$/,
-            
-                  
+                            
+
                     use : [ 'style-loader','css-loader','sass-loader',]
                     
                 
@@ -53,12 +51,12 @@ module : {
         },
       
         {
-            include: [path.resolve(__dirname, 'src')],
+
             test: /\.(jpg|png|svg|gif)$/,
             use: 'file-loader',
         },
         {
-            include: [path.resolve(__dirname, 'src')],
+
             test: /\.html$/,
             use: ['html-loader']
 },
@@ -74,7 +72,13 @@ module : {
         filename: '[name].bundle.js',
 
     },),  */
-    
+    new HtmlWebpackPlugin(
+        { 
+            template: "./src/calc.html",
+            filename: "./index.html"
+        }
+    )
+
 ],
 
 };
