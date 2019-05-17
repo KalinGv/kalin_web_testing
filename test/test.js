@@ -46,7 +46,7 @@ describe("3-1", function () {
     });
 });
 
-describe("undefined", function () {                        // When an empty uptut is evaluated the result is undefined.
+describe("undefined", function () {                        // When an empty uptut was evaluated the result is undefined.
     it("be equal to 0", function () {                           // So the evaluated function have to make it 0
         calculator.clearAll();
         expect(calculator.evaluate()).toEqual('0');

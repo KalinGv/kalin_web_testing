@@ -1,62 +1,61 @@
-const webpack = require('webpack');
-const path = require('path');
+const webpack = require("webpack");
+const path = require("path");
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
 module.exports = {
-    entry: {
-        app : "./src/js/app.js"  
-    },
-    output: {   
+	entry: {
+		app: "./src/js/app.js"
+	},
+	output: {
 
-        filename: "[name].bundle.js",    
-    }, 
-    devtool: 'source-map',
-    devServer: {
+		filename: "[name].bundle.js",
+	},
+	devtool: "source-map",
+	devServer: {
 
-        inline: true,
-        hot: true,
-    },
-    mode: 'development',
-    module : {
-        rules: [
-            {            
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: [
-                    {
-                        loader: 'babel-loader',                       
-                    }             
-                ]   
-            },
-            {               
-                test: /\.(scss|css)$/,
-                    use : [ 'style-loader',
-                        'css-loader',
-                        'sass-loader',
-                    ]          
-            },      
-            {            
-                test: /\.(jpg|png|svg|gif)$/,
-                use:  'file-loader',
-                
-            },
-            {         
-                test: /\.html$/,
-                use: ['html-loader']
-            },                  
-        ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin(
-            { 
-                template: "./src/calc.html",
-                filename: "./index.html"
+		inline: true,
+		hot: true,
+	},
+	mode: "development",
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: [
+					{
+						loader: "babel-loader",
+					}
+				]
+			},
+			{
+				test: /\.(scss|css)$/,
+				use: ["style-loader",
+					"css-loader",
+					"sass-loader",
+				]
+			},
+			{
+				test: /\.(jpg|png|svg|gif)$/,
+				use: "file-loader",
 
-            }
-        )
-    ]
+			},
+			{
+				test: /\.html$/,
+				use: ["html-loader"]
+			},
+		]
+	},
+	plugins: [
+		new HtmlWebpackPlugin(
+			{
+				template: "./src/calc.html",
+				filename: "./index.html"
+
+			}
+		)
+	]
 
 };
- 
